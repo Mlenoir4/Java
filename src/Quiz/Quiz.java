@@ -31,8 +31,7 @@ public class Quiz {
         questions.add(new Questions("Date de création de Java ?", new Reponse("1: 1990", "2: 1995", "3: 2000", "4: 2005" , 2)));
     }
 
-    void startQuiz()
-    {
+    void startQuiz() throws Exception {
         int i = 1;
         for (Questions currentQuestion: this.questions) {
             System.out.println("Question N°"+ i++);

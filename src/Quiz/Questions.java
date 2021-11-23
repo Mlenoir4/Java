@@ -3,8 +3,9 @@
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
+import static java.lang.Integer.toHexString;
 
-public class Questions {
+ public class Questions {
     public String question;
     Reponse reponse;
 
@@ -21,13 +22,13 @@ public class Questions {
         System.out.println(this.reponse.reponse4);
     }
 
-    Boolean displayQuestions()
-    {
+    Boolean displayQuestions() throws Exception {
         System.out.println(this.question);
         this.afficherReponses();
         System.out.println("Votre reponse: ");
         Scanner sc = new Scanner(System.in);
         String str = sc.nextLine();
+        myException(str);
         System.out.println(this.verifierReponse(str));
         return (parseInt(str) == this.reponse.bonneReponse);
     }
@@ -56,5 +57,13 @@ public class Questions {
             System.out.println("La bonne reponse est " + displayCorrectReponse(this.reponse.bonneReponse));
             return ("Faux !");
         }
+    }
+
+
+    void myException(String str) throws Exception {
+        if (str.isEmpty()){
+            throw new Exception("Entrée vide !");
+        } else if (parseInt(str) > 4 || parseInt(str) < 1)
+            throw new Exception("Entrée non valide !");
     }
 }
