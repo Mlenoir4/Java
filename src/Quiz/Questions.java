@@ -1,9 +1,11 @@
  package Quiz;
 
+import Quiz.error.NotResponseException;
+import Quiz.error.NullValueException;
+
 import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
-import static java.lang.Integer.toHexString;
 
  public class Questions {
     public String question;
@@ -22,7 +24,7 @@ import static java.lang.Integer.toHexString;
         System.out.println(this.reponse.reponse4);
     }
 
-    Boolean displayQuestions() throws Exception {
+    Boolean displayQuestions(){
         System.out.println(this.question);
         this.afficherReponses();
         System.out.println("Votre reponse: ");
@@ -60,10 +62,10 @@ import static java.lang.Integer.toHexString;
     }
 
 
-    void myException(String str) throws Exception {
+    void myException(String str) throws NullValueException, NotResponseException {
         if (str.isEmpty()){
-            throw new Exception("Entrée vide !");
+            throw new NullValueException("Valeur null, #Noob");
         } else if (parseInt(str) > 4 || parseInt(str) < 1)
-            throw new Exception("Entrée non valide !");
+            throw new NotResponseException("Not a valide number !");
     }
 }
